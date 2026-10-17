@@ -3,115 +3,454 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Ovee Bangles | Handbling_art</title>
+  <meta name="theme-color" content="#fff5f8">
+  <title>Ovee Bangles | Imitation Jewellery</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      min-height: 100vh;
       font-family: Arial, sans-serif;
-      text-align: center;
+      color: #39242c;
       background: linear-gradient(135deg, #fff5f8, #f8efe5);
-      padding: 35px 20px;
     }
 
     .container {
-      max-width: 500px;
+      width: min(100% - 28px, 850px);
       margin: auto;
     }
 
+    header {
+      text-align: center;
+      padding: 30px 0 22px;
+    }
+
     h1 {
-      margin: 10px 0 5px;
-      font-size: 32px;
+      margin: 8px 0;
+      font-size: clamp(28px, 6vw, 38px);
+      letter-spacing: 1px;
     }
 
     .subtitle {
-      font-size: 16px;
-      margin-bottom: 30px;
+      line-height: 1.6;
+      color: #755b65;
     }
 
     .button {
       display: block;
       width: 100%;
-      padding: 17px 15px;
-      margin: 15px 0;
-      border-radius: 14px;
+      padding: 15px;
+      margin: 11px 0;
+      border: 0;
+      border-radius: 13px;
       text-decoration: none;
       color: white;
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px #00000012;
     }
 
-    .whatsapp {
+    .instagram { background: #E1306C; }
+    .youtube { background: #FF0000; }
+    .facebook { background: #1877F2; }
+    .whatsapp { background: #25D366; }
+    .shop-button { background: #8b3156; }
+
+    .section {
+      padding: 22px 0;
+      scroll-margin-top: 12px;
+    }
+
+    h2 {
+      font-size: 23px;
+      margin: 5px 0 14px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0 18px;
+    }
+
+    .filter {
+      border: 1px solid #d8b8c6;
+      border-radius: 30px;
+      background: #fff;
+      color: #73304e;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+
+    .filter.active {
+      background: #8b3156;
+      color: white;
+      border-color: #8b3156;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 13px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 14px;
+      overflow: hidden;
+      text-align: left;
+      box-shadow: 0 3px 12px #4b203010;
+    }
+
+    .product img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      background: #fff;
+      display: block;
+    }
+
+    .product-info { padding: 11px; }
+
+    .product h3 {
+      font-size: 15px;
+      margin: 0 0 7px;
+      line-height: 1.35;
+    }
+
+    .code {
+      font-size: 12px;
+      color: #78616b;
+      overflow-wrap: anywhere;
+    }
+
+    .prices {
+      margin: 9px 0 5px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 7px;
+    }
+
+    .mrp {
+      color: #8b777e;
+      font-size: 13px;
+      text-decoration: line-through;
+      text-decoration-color: red;
+      text-decoration-thickness: 2px;
+    }
+
+    .sale {
+      color: #a5224f;
+      font-weight: bold;
+      font-size: 19px;
+    }
+
+    .stock, .description {
+      font-size: 12px;
+      line-height: 1.5;
+      color: #65515a;
+      margin: 6px 0;
+    }
+
+    .order-button {
+      display: block;
+      width: 100%;
       background: #25D366;
+      color: #123e23;
+      border-radius: 8px;
+      padding: 10px 6px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 13px;
+      margin-top: 10px;
     }
 
-    .instagram {
-      background: #E1306C;
-    }
-
-    .youtube {
-      background: #FF0000;
-    }
-
-    .facebook {
-      background: #1877F2;
+    .message {
+      padding: 18px 10px;
+      text-align: center;
+      color: #755b65;
+      line-height: 1.6;
     }
 
     .footer {
-      margin-top: 30px;
-      font-size: 14px;
+      text-align: center;
+      padding: 24px 0 32px;
+      color: #755b65;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    @media (min-width: 600px) {
+      .products { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .social-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0 14px;
+      }
     }
   </style>
 </head>
 
 <body>
-
   <div class="container">
+    <header>
+      <h1>OVEE BANGLES</h1>
+      <div class="subtitle">
+        Handbling_art<br>
+        Imitation Jewellery at Affordable Prices
+      </div>
+    </header>
 
-    <h1>OVEE BANGLES</h1>
+    <nav class="social-links" aria-label="Social links">
+      <a class="button instagram"
+         href="https://www.instagram.com/thehandbling_art?igsi=YWpyazRoMjJiMHIw"
+         target="_blank" rel="noopener">📸 Instagram</a>
 
-    <div class="subtitle">
-      Handbling_art<br>
-      Imitation Jewellery
-    </div>
+      <a class="button youtube"
+         href="https://youtube.com/@the_handbling_art?si=Ko9k-YdPdgde8zZx"
+         target="_blank" rel="noopener">▶️ YouTube</a>
 
-     <a class="button instagram"
-       href="https://www.instagram.com/thehandbling_art?igsi=YWpyazRoMjJiMHIw"
-       target="_blank">
-       📸 Instagram
+      <a class="button facebook"
+         href="https://www.facebook.com/share/1C1NT1PC3G/"
+         target="_blank" rel="noopener">📘 Facebook</a>
+
+      <a class="button whatsapp"
+         href="https://whatsapp.com/channel/0029VbCHyXKEgGfQz2WpSW0O"
+         target="_blank" rel="noopener">💬 WhatsApp Channel</a>
+    </nav>
+
+    <a class="button shop-button" href="#catalogue">
+      🛍️ Shop Our Products
     </a>
 
-    <a class="button youtube"
-       href="https://youtube.com/@the_handbling_art?si=Ko9k-YdPdgde8zZx"
-       target="_blank">
-       ▶️ YouTube
-    </a>
+    <main>
+      <section class="section" id="catalogue">
+        <h2>Our Product Catalogue</h2>
+        <div class="subtitle">Choose your favourite design</div>
 
-    <a class="button facebook"
-       href="https://www.facebook.com/share/1C1NT1PC3G/"
-       target="_blank">
-       📘 Facebook
-    </a>
-    
-    <a class="button whatsapp"
-       href="https://whatsapp.com/channel/0029VbCHyXKEgGfQz2WpSW0O"
-       target="_blank">
-       💬 WhatsApp Channel
-    </a>
+        <div class="filters" aria-label="Product categories">
+          <button class="filter active" data-category="all">All Products</button>
+          <button class="filter" data-category="bangles">Bangles</button>
+          <button class="filter" data-category="chain">Chains</button>
+          <button class="filter" data-category="earring">Earrings</button>
+        </div>
 
-    
+        <div id="status" class="message">Loading products...</div>
+        <div id="products" class="products"></div>
+      </section>
+
+      <section class="section" id="trending-section" hidden>
+        <h2>🔥 Trending Now</h2>
+        <div id="trending-products" class="products"></div>
+      </section>
+
+      <section class="section" id="new-section" hidden>
+        <h2>✨ New Arrivals</h2>
+        <div id="new-products" class="products"></div>
+      </section>
+
+      <section class="section" id="offers-section" hidden>
+        <h2>🎁 Special Offers</h2>
+        <div id="offer-products" class="products"></div>
+      </section>
+    </main>
+
     <div class="footer">
-      Subscribe now for daily updates & offers ❤️
+      Subscribe for daily updates & offers ❤️<br>
+      Ovee Bangles · Store-room to customer
     </div>
-
   </div>
 
+  <script>
+    const API_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AUkAhnQ1sHIuhxBQNY4PblA3-LQuUdcyFXRwIsvTH2UugeqG7dqigwOezj7yj30oR52uRmj5WVvLH9A7QML4NVRuxbwsCObE_vSh6xkJ8Y5TJFYktlaPuG5BdXRubDSKEypUsdeabCZLJ6LQQyCcrT6V4GtPOgK9xHlFq2hIlXDxOr0v52qRuRlOY9-gQZGPUgdRMRKtOSSGxGOJ2BjFZdEq9vPD8HdqNq1k4_cR_3Jy6IHMaKeMJ6P2Cbu2LH30IZZfK6e_5UwgNfOdW4oCszg&lib=MwyUwGAuXEdzyqdQjavtIe46RGsciQkmU";
+
+    const productsEl = document.getElementById("products");
+    const statusEl = document.getElementById("status");
+    let allProducts = [];
+    let selectedCategory = "all";
+
+    function categoryKey(value) {
+      const category = String(value || "").toLowerCase();
+      if (category.includes("bangle")) return "bangles";
+      if (category.includes("chain")) return "chain";
+      if (category.includes("earring")) return "earring";
+      return category;
+    }
+
+    function imageUrl(url) {
+      const value = String(url || "");
+      const match = value.match(/\/file\/d\/([^/]+)/);
+
+      if (match) {
+        return "https://drive.google.com/thumbnail?id=" +
+          encodeURIComponent(match[1]) + "&sz=w900";
+      }
+
+      return value;
+    }
+
+    function safeText(value) {
+      return String(value ?? "");
+    }
+
+    function createProductCard(product) {
+      const card = document.createElement("article");
+      card.className = "product";
+
+      const image = document.createElement("img");
+      image.src = imageUrl(product.photo);
+      image.alt = safeText(product.name);
+      image.loading = "lazy";
+      image.onerror = () => {
+        image.removeAttribute("src");
+        image.alt = "Product photo unavailable";
+      };
+      card.appendChild(image);
+
+      const info = document.createElement("div");
+      info.className = "product-info";
+
+      const title = document.createElement("h3");
+      title.textContent = safeText(product.name);
+      info.appendChild(title);
+
+      const code = document.createElement("div");
+      code.className = "code";
+      code.textContent = "Code: " + safeText(product.code);
+      info.appendChild(code);
+
+      const prices = document.createElement("div");
+      prices.className = "prices";
+
+      const mrp = document.createElement("span");
+      mrp.className = "mrp";
+      mrp.textContent = "MRP " + safeText(product.mrp);
+
+      const sale = document.createElement("span");
+      sale.className = "sale";
+      sale.textContent = safeText(product.salePrice);
+
+      prices.append(mrp, sale);
+      info.appendChild(prices);
+
+      const stock = document.createElement("div");
+      stock.className = "stock";
+      const quantity = Number(product.stock);
+      stock.textContent = quantity > 0
+        ? "In stock: " + safeText(product.stock)
+        : "Currently unavailable";
+      info.appendChild(stock);
+
+      if (product.description) {
+        const description = document.createElement("p");
+        description.className = "description";
+        description.textContent = safeText(product.description);
+        info.appendChild(description);
+      }
+
+      if (quantity > 0) {
+        const message = "Hello Ovee Bangles! I want to order: " +
+          safeText(product.name) + ", Product Code: " +
+          safeText(product.code) + ", Price: " +
+          safeText(product.salePrice);
+
+        const order = document.createElement("a");
+        order.className = "order-button";
+        order.href = "https://wa.me/?text=" + encodeURIComponent(message);
+        order.target = "_blank";
+        order.rel = "noopener";
+        order.textContent = "Order on WhatsApp";
+        info.appendChild(order);
+      }
+
+      card.appendChild(info);
+      return card;
+    }
+
+    function renderProducts(list, container) {
+      container.replaceChildren();
+      list.forEach(product => container.appendChild(createProductCard(product)));
+    }
+
+    function renderCatalogue() {
+      const filtered = allProducts.filter(product =>
+        selectedCategory === "all" ||
+        categoryKey(product.category) === selectedCategory
+      );
+
+      renderProducts(filtered, productsEl);
+      statusEl.textContent = filtered.length
+        ? "Showing " + filtered.length + " product(s)"
+        : "No products in this category right now.";
+    }
+
+    function renderFlagSection(flagNames, sectionId, listId) {
+      const featured = allProducts.filter(product =>
+        flagNames.some(flag => {
+          const value = product[flag];
+          return value === true ||
+            ["yes", "true", "1"].includes(String(value || "").toLowerCase());
+        })
+      );
+
+      const section = document.getElementById(sectionId);
+      section.hidden = featured.length === 0;
+
+      if (featured.length) {
+        renderProducts(featured, document.getElementById(listId));
+      }
+    }
+
+    document.querySelectorAll(".filter").forEach(button => {
+      button.addEventListener("click", () => {
+        selectedCategory = button.dataset.category;
+
+        document.querySelectorAll(".filter").forEach(item =>
+          item.classList.toggle("active", item === button)
+        );
+
+        renderCatalogue();
+      });
+    });
+
+    async function loadProducts() {
+      try {
+        const response = await fetch(API_URL, { cache: "no-store" });
+        if (!response.ok) throw new Error("Could not load product data.");
+
+        const data = await response.json();
+        if (!data.success || !Array.isArray(data.products)) {
+          throw new Error(data.error || "Product data format is incorrect.");
+        }
+
+        allProducts = data.products.filter(product =>
+          Number(product.stock) > 0
+        );
+
+        renderCatalogue();
+
+        renderFlagSection(["Trending", "trending"], "trending-section",
+          "trending-products");
+        renderFlagSection(["New_Arrival", "newArrival", "new_arrival"],
+          "new-section", "new-products");
+        renderFlagSection(["special_offer", "specialOffer", "Special_Offer"],
+          "offers-section", "offer-products");
+
+      } catch (error) {
+        statusEl.textContent =
+          "Products load nahi ho paaye. Thodi der baad dobara try karein.";
+        console.error(error);
+      }
+    }
+
+    loadProducts();
+  </script>
 </body>
 </html>
