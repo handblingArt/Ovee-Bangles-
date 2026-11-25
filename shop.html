@@ -177,17 +177,28 @@ function createProductCard(p){
   info.appendChild(desc);
  }
 
- if(quantity>0){
-  const message="Hello Ovee Bangles! I want to order: "+p.name+
-  ", Product Code: "+p.code+", Price: "+p.salePrice;
+if(quantity>0){
+  const message=`Hello Ovee Bangles ❤️
+
+I want to order this product:
+
+Product: ${p.name}
+Product Code: ${p.code}
+Price: ${p.salePrice}
+
+Please confirm availability.`;
+
   const order=document.createElement("a");
   order.className="order";
-  order.href="https://wa.me/?text="+encodeURIComponent(message);
+
+  order.href="https://wa.me/919869185248?text="+
+  encodeURIComponent(message);
+
   order.target="_blank";
   order.rel="noopener";
   order.textContent="Order on WhatsApp";
   info.appendChild(order);
- }
+}
  card.appendChild(info);
  return card;
 }
